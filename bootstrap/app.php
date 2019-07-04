@@ -25,6 +25,7 @@ $app->withFacades();
 
 $app->withEloquent();
 
+$app->configure('auth');
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -80,12 +81,16 @@ $app->routeMiddleware([
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
+
+$app->register(Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
+
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
-$app->configure('auth');
+
+
 Dusterio\LumenPassport\LumenPassport::routes($app->router, ['prefix' => 'api/v1'] );
-$app->register(Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------

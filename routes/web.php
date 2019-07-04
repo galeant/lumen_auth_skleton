@@ -11,6 +11,16 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+
+$router->group(['prefix' => 'api'], function() use (&$router){
+    $router->group(['prefix' => 'v1'], function() use (&$router){
+        
+    //     // Test Route
+        $router->group(['prefix' => 'test'], function() use (&$router){
+            return "routing stuff...";
+        });
+    });
 });
